@@ -6,7 +6,7 @@ with open('README.rst') as readme_file:
 
 setup(
     name='locust-xmlrpc',
-    version='0.1.0',
+    version='0.2.0',
     description='XML-RPC Transport for Locust',
     long_description=readme,
     author='GISCE-TI, S.L.',
