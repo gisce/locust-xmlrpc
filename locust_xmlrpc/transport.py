@@ -1,10 +1,10 @@
 import time
-import xmlrpclib
+from six.moves import xmlrpc_client
 
-from locust import Locust, TaskSet, events, task
+from locust import Locust, events
 
 
-class LocustXmlRpcTransport(xmlrpclib.Transport, object):
+class LocustXmlRpcTransport(xmlrpc_client.Transport, object):
     def single_request(self, host, handler, request_body, verbose=0):
         start_time = time.time()
         try:
@@ -23,7 +23,7 @@ class LocustXmlRpcTransport(xmlrpclib.Transport, object):
                 if response.status == 200:
                     self.verbose = verbose
                     result = self.parse_response(response)
-            except xmlrpclib.Fault:
+            except xmlrpc_client.Fault:
                 raise
             except Exception:
                 # All unexpected errors leave connection in
@@ -35,12 +35,12 @@ class LocustXmlRpcTransport(xmlrpclib.Transport, object):
                 #discard any response data and raise exception
                 if (response.getheader("content-length", 0)):
                     response.read()
-                raise xmlrpclib.ProtocolError(
+                raise xmlrpc_client.ProtocolError(
                     host + handler,
                     response.status, response.reason,
                     response.msg,
                     )
-        except xmlrpclib.Fault as e:
+        except xmlrpc_client.Fault as e:
             total_time = int((time.time() - start_time) * 1000)
             events.request_failure.fire(
                 request_type="xmlrpc",
