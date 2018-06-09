@@ -3,4 +3,20 @@ XML-RPC for locust
 
 A XML-RPC Transport to use with `Locust <https://locust.io/>`_
 
+Usage in your locustfile:
+
+.. code:: python
+
+  import xmlrpclib
   
+  from locust_xmlrpc import LocustXmlRpcTransport
+  from locust import Locust
+  
+  class XmlRpcLocust(Locust):
+    def __init__(self, *args, **kwargs):
+        super(XmlRpcLocust, self).__init__(*args, **kwargs)
+
+        self.client = xmlrpclib.ServerProxy(
+            '{}/xmlrpc'.format(self.host),
+            transport=LocustXmlRpcTransport()
+        )
