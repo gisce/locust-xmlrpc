@@ -48,6 +48,7 @@ class LocustXmlRpcTransport(xmlrpc_client.Transport, object):
                 response_time=total_time,
                 exception=e
             )
+            return ""
         else:
             total_time = int((time.time() - start_time) * 1000)
             response_length = int(response.getheader("content-length", 0))
@@ -57,4 +58,4 @@ class LocustXmlRpcTransport(xmlrpc_client.Transport, object):
                 response_time=total_time,
                 response_length=response_length
             )
-        return result
+            return result
