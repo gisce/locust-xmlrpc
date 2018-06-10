@@ -1,6 +1,6 @@
 import unittest
-import thread
-from xmlrpclib import ServerProxy
+from threading import Thread
+from six.moves.xmlrpc_client import ServerProxy
 from locust_xmlrpc import LocustXmlRpcTransport
 from locust.stats import global_stats
 
@@ -10,7 +10,7 @@ class TestTransport(unittest.TestCase):
     def setUp(self):
         from .server import server, start_server
         self.server = server
-        thread.start_new_thread(start_server)
+        Thread(target=start_server).start()
         self.client = ServerProxy(
             'http://localhost:8000/RPC2',
             transport=LocustXmlRpcTransport()
