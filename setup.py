@@ -17,5 +17,6 @@ setup(
         'locustio',
         'six'
     ],
-    license='MIT',    
+    license='MIT',
+    test_suite='tests'
 )
