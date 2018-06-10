@@ -1,6 +1,9 @@
 XML-RPC for locust
 ==================
 
+.. image:: https://travis-ci.com/gisce/locust-xmlrpc.svg?branch=master
+    :target: https://travis-ci.com/gisce/locust-xmlrpc
+
 A XML-RPC Transport to use with `Locust <https://locust.io/>`_
 
 Usage in your locustfile:
@@ -21,4 +24,4 @@ Usage in your locustfile:
             transport=LocustXmlRpcTransport()
         )
         
-:warning: I don't have tested with Python3, it should work but I can't assure
+:warning: Not working on Python3 yet! See `#4 <https://github.com/gisce/locust-xmlrpc/issues/4>`_
