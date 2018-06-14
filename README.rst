@@ -23,5 +23,3 @@ Usage in your locustfile:
             '{}/xmlrpc'.format(self.host),
             transport=LocustXmlRpcTransport()
         )
-        
-:warning: Not working on Python3 yet! See `#4 <https://github.com/gisce/locust-xmlrpc/issues/4>`_
