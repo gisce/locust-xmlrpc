@@ -14,7 +14,7 @@ setup(
     url='https://github.com/gisce/locust-xmlrpc',
     packages=find_packages(),
     install_requires=[
-        'locustio',
+        'locust',
         'six'
     ],
     license='MIT',
